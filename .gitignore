@@ -1,0 +1,6 @@
+.idea/
+SparkTest.iml
+spark.iml
+src/main/resources/
+src/test/
+target/
