@@ -35,16 +35,13 @@ object Parse extends Serializable{
      Log(dateTime.toInstant(ZoneOffset.UTC).toEpochMilli(),logLevel,logClass.substring(0,logClass.length-1),msg)
   }
 
-  def isLogLine(str: String) ={
-    str.startsWith("2016") || str.startsWith("2015")
-  }
-
+  def isLogLine(str: String): Boolean = str.startsWith("2016") || str.startsWith("2015")
 
   def localDateTime (milis: java.lang.Long) = LocalDateTime.ofInstant(Instant.ofEpochMilli(milis),ZoneId.systemDefault)
 
 
   /** generete state*/
-  def generateState(time: java.lang.Long,msg: String)={
+  def generateState(time: java.lang.Long,msg: String): State = {
     val tokens = msg.split(" ")
     val containerId = tokens(1)
     val from = tokens(5)
