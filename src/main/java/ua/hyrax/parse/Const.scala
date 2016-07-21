@@ -1,4 +1,4 @@
-package ua.devian.parse
+package ua.hyrax.parse
 
 /**
   * Created by devian on 15.07.16.

@@ -1,4 +1,4 @@
-package ua.devian.parse.util
+package ua.hyrax.parse.util
 
 import org.apache.spark.rdd.RDD
 

@@ -1,7 +1,7 @@
-package ua.devian.parse.util
+package ua.hyrax.parse.util
 
-import ua.devian.parse.Const
-import ua.devian.parse.model.{Log, State}
+import ua.hyrax.parse.Const
+import ua.hyrax.parse.model.{Log, State}
 
 /**
   * Created by devian on 15.07.16.

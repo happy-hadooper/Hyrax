@@ -1,9 +1,9 @@
-package ua.devian.parse.util
+package ua.hyrax.parse.util
 
 import java.util.concurrent.atomic.AtomicInteger
 
 import org.apache.spark.rdd.RDD
-import ua.devian.parse.model.{Log, State}
+import ua.hyrax.parse.model.Log
 
 /**
   * Created by devian on 15.07.16.

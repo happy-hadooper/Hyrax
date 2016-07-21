@@ -1,4 +1,4 @@
-package ua.devian.parse.model
+package ua.hyrax.parse.model
 
 /**
   * Created by devian on 15.07.16.

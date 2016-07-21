@@ -1,8 +1,6 @@
-package ua.devian.parse
+package ua.hyrax.parse
 
-import java.util.concurrent.atomic.AtomicInteger
-
-import ua.devian.parse.util.{Container, Parse, Print}
+import ua.hyrax.parse.util.Print
 
 import scala.io.Source
 /**

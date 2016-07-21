@@ -1,4 +1,4 @@
-package ua.devian.parse.model
+package ua.hyrax.parse.model
 
 import java.lang.Long
 
