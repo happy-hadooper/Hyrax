@@ -1,7 +1,5 @@
 package ua.hyrax.parse.util
 
-import parse.Const
-import parse.model.{Log, State}
 import ua.hyrax.parse.Const
 import ua.hyrax.parse.model.{Log, State}
 

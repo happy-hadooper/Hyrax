@@ -1,9 +1,9 @@
 package ua.hyrax.parse.util
 
+import java.lang.Throwable
 import java.time.format.{DateTimeFormatter, DateTimeParseException}
 import java.time.{Instant, LocalDateTime, ZoneId, ZoneOffset}
 
-import parse.model.Log
 import ua.hyrax.parse.model.{Log, State}
 
 /**
@@ -24,7 +24,7 @@ object Parse extends Serializable{
       dateTime = LocalDateTime.parse(line.substring(0,MAX_DATE_TIME),formatterRM)
     }catch {
       case e: DateTimeParseException => println("cannot parse: " + line)
-      case _ => println("Some other shit happened")
+      case _:Throwable => println("Some other shit happened")
     }
     val splitSpace = line.substring(MAX_DATE_TIME,line.length).split(" ")
     val logLevel = splitSpace(1)
