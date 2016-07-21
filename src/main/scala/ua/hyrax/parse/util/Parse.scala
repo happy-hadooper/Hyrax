@@ -6,6 +6,8 @@ import java.time.{Instant, LocalDateTime, ZoneId, ZoneOffset}
 
 import ua.hyrax.parse.model.{Log, State}
 
+import scala.runtime.Nothing$
+
 /**
   * Created by devian on 14.07.16.
   */
@@ -18,16 +20,20 @@ object Parse extends Serializable{
   /** the max length of time String */
   val MAX_DATE_TIME: Int = 23
 
-  def parseLogRM(line: String)= {
-    val dateTime = parseDateTime(line)
-    val splitSpace = line.substring(MAX_DATE_TIME,line.length).split(" ")
-    val logLevel = splitSpace(1)
-    val logClass = splitSpace(2)
+  def parseLogRM(line: String): Log = {
+    val dateTime = Option(parseDateTime(line)).orElse(None)
+    val splitSpace = line.substring(MAX_DATE_TIME,line.length).split(" ".intern())
+    if(splitSpace.length < 2){
+      println("NotParseable: " + line)
+      return Log(1L,"","",line)
+    }
+    val logLevel = splitSpace(1).intern()
+    val logClass = splitSpace(2).intern()
     // calculating offset of msg
     val size = logLevel.length+logClass.length+2
     val msg = line.substring(MAX_DATE_TIME+size,line.length)
 
-     Log(dateTime.toInstant(ZoneOffset.UTC).toEpochMilli(),logLevel,logClass.substring(0,logClass.length-1),msg)
+     Log(dateTime.getOrElse(LocalDateTime.now()).toInstant(ZoneOffset.UTC).toEpochMilli(),logLevel,logClass.substring(0,logClass.length-1).intern(),msg)
   }
 
   def parseDateTime(line: String): LocalDateTime = {
@@ -50,8 +56,8 @@ object Parse extends Serializable{
   def generateState(time: java.lang.Long,msg: String): State = {
     val tokens = msg.split(" ")
     val containerId = tokens(1)
-    val from = tokens(5)
-    val to = tokens(7)
+    val from = tokens(5).intern()
+    val to = tokens(7).intern()
     State(containerId,from,to,time)
   }
 

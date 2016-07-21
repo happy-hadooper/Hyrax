@@ -11,7 +11,7 @@ object SparkHyrax extends Serializable{
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setAppName("Hyrax").setMaster("yarn-client")
     val sc = new SparkContext(conf)
-    val sqlContext = new org.apache.spark.sql.SQLContext(sc)
+    //val sqlContext = new org.apache.spark.sql.SQLContext(sc)
     val logsFile = sc.textFile(args(0))
     Print.transitionInfo(logsFile)
 
