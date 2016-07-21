@@ -1,0 +1,2 @@
+# Hyrax
+Hadoop Logs Analyzer
