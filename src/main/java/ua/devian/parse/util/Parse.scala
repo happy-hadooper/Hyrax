@@ -29,6 +29,7 @@ object Parse extends Serializable{
     val dateTime = LocalDateTime.parse(line.substring(0,MAX_DATE_TIME),formatterRM)
     }catch {
       case e: DateTimeParseException => println("cannot parse: " + line)
+      case _ => println("Some other shit happened")
     }
     val splitSpace = line.substring(MAX_DATE_TIME,line.length).split(" ")
     val logLevel = splitSpace(1)
@@ -37,7 +38,7 @@ object Parse extends Serializable{
     val size = logLevel.length+logClass.length+2
     val msg = line.substring(MAX_DATE_TIME+size,line.length)
 
-    new Log(dateTime.toInstant(ZoneOffset.UTC).toEpochMilli(),logLevel,logClass.substring(0,logClass.length-1),msg)
+     Log(dateTime.toInstant(ZoneOffset.UTC).toEpochMilli(),logLevel,logClass.substring(0,logClass.length-1),msg)
   }
 
   def isLogLine(str: String) ={
