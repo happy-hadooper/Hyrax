@@ -3,6 +3,7 @@ package ua.hyrax.parse.util
 import java.util.concurrent.atomic.AtomicInteger
 
 import org.apache.spark.rdd.RDD
+import parse.model.Log
 import ua.hyrax.parse.model.Log
 
 /**

@@ -3,6 +3,7 @@ package ua.hyrax.parse.util
 import java.time.format.{DateTimeFormatter, DateTimeParseException}
 import java.time.{Instant, LocalDateTime, ZoneId, ZoneOffset}
 
+import parse.model.Log
 import ua.hyrax.parse.model.{Log, State}
 
 /**
