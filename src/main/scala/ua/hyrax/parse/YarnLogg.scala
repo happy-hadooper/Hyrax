@@ -10,7 +10,12 @@ import scala.io.Source
 object YarnLogg extends Serializable{
 
   def main(args: Array[String]): Unit = {
+    if(args.length < 1){
+      println("first argument should be file to parse")
+      sys.exit(1)
+    }
     val logs = Source.fromFile(args(0)).getLines.toArray
+
      Print.transitionInfo(logs)
 
     }
