@@ -9,24 +9,18 @@ import ua.hyrax.parse.model.{Log, State}
   * Created by devian on 14.07.16.
   */
 
-
-
-
 object Parse extends Serializable{
   val formatterRM: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss,SSS")
-
 
   val CLASS_CONTAINER_IMPL = "RMContainerImpl".intern()
   val CLASS_FAIR_SCHEDULER = "FairScheduler".intern()
   /** the max length of time String */
   val MAX_DATE_TIME: Int = 23
 
-
-
   def parseLogRM(line: String)= {
-    val dateTime = LocalDateTime.now()
+    var dateTime: LocalDateTime = ???
     try{
-    val dateTime = LocalDateTime.parse(line.substring(0,MAX_DATE_TIME),formatterRM)
+      dateTime = LocalDateTime.parse(line.substring(0,MAX_DATE_TIME),formatterRM)
     }catch {
       case e: DateTimeParseException => println("cannot parse: " + line)
       case _ => println("Some other shit happened")
@@ -46,10 +40,8 @@ object Parse extends Serializable{
   }
 
 
-  def localDateTime (milis: java.lang.Long) ={
-    val r = LocalDateTime.ofInstant(Instant.ofEpochMilli(milis),ZoneId.systemDefault)
-    r
-  }
+  def localDateTime (milis: java.lang.Long) = LocalDateTime.ofInstant(Instant.ofEpochMilli(milis),ZoneId.systemDefault)
+
 
   /** generete state*/
   def generateState(time: java.lang.Long,msg: String)={
@@ -57,7 +49,7 @@ object Parse extends Serializable{
     val containerId = tokens(1)
     val from = tokens(5)
     val to = tokens(7)
-    new State(containerId,from,to,time)
+    State(containerId,from,to,time)
   }
 
 }
