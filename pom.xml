@@ -8,7 +8,6 @@
     <groupId>ua.hyrax</groupId>
     <artifactId>parse</artifactId>
     <version>1.2-SNAPSHOT</version>
-    <scala.version>2.10.5</scala.version>
     <dependencies>
         <dependency>
             <groupId>org.apache.spark</groupId>
@@ -47,7 +46,7 @@
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>2.10.5</version>
+            <version>2.10.4</version>
         </dependency>
 
     </dependencies>
@@ -59,6 +58,9 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+
+
+
                 </configuration>
             </plugin>
             <plugin>
@@ -91,6 +93,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
+                            <addClasspath>true</addClasspath>
                             <mainClass>ua.hyrax.parse.YarnLogg</mainClass>
                         </manifest>
                     </archive>
