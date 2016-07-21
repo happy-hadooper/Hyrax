@@ -6,8 +6,8 @@
     <packaging>jar</packaging>
     <name>Hyrax</name>
 
-    <groupId>tests</groupId>
-    <artifactId>spark</artifactId>
+    <groupId>ua.hyrax</groupId>
+    <artifactId>parse</artifactId>
     <version>1.2-SNAPSHOT</version>
     <dependencies>
         <dependency>
