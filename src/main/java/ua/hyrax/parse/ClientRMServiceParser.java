@@ -23,9 +23,7 @@ public class ClientRMServiceParser {
     public ApplicationInfo parse(String line) {
 
         String[] parsing = line.split(" ");
-
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss,SSS");
-
         Date date = new Date();
 
         try {
@@ -36,14 +34,12 @@ public class ClientRMServiceParser {
 
         long timestamp = date.getTime();
         String logLevel = parsing[2];
-        String clazz = parsing[3];
+        String[] clazz = parsing[3].split(":");
         long applicationId = Integer.parseInt(parsing[7]);
         String user = parsing[11];
 
         ApplicationInfo applicationInfo = new ApplicationInfo
-                    (user, applicationId, timestamp, clazz, logLevel);
+                    (user, applicationId, timestamp, clazz[0], logLevel);
         return applicationInfo;
-
-        System.out.println();
     }
 }
