@@ -18,7 +18,7 @@ import java.util.Date;
  *      applicationId;
  *      user;
  */
-public class ClientRMServiceParser {
+public class ClientRMServiceParser implements Parsable {
 
     public ApplicationInfo parse(String line) {
 
