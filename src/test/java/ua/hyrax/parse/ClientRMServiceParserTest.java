@@ -4,9 +4,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created by mchalaev on 25.07.16.
- */
 public class ClientRMServiceParserTest {
     @Test
     public void parseClientRMService() {
