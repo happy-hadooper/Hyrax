@@ -1,7 +1,6 @@
 package ua.hyrax.parse;
 
 /**
- * Created by mchalaev on 25.07.16
  *
  */
 public class ApplicationInfo {

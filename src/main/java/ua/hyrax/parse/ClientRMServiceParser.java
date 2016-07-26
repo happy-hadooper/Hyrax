@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by mchalaev on 25.07.16.
  * This class parses the lines of the class org.apache.hadoop.yarn.server.resourcemanager.ClientRMService
  * For example:
  * "2016-07-07 09:32:09,631 INFO org.apache.hadoop.yarn.server.resourcemanager.ClientRMService:
@@ -18,7 +17,7 @@ import java.util.Date;
  *      applicationId;
  *      user;
  */
-public class ClientRMServiceParser {
+public class ClientRMServiceParser implements Parsable {
 
     public ApplicationInfo parse(String line) {
 
