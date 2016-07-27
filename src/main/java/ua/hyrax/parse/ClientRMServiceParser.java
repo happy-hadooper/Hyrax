@@ -3,6 +3,8 @@ package ua.hyrax.parse;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * This class parses the lines of the class org.apache.hadoop.yarn.server.resourcemanager.ClientRMService
@@ -21,24 +23,39 @@ public class ClientRMServiceParser implements Parsable {
 
     public ApplicationInfo parse(String line) {
 
-        String[] parsing = line.split(" ");
+        //The parser ClientRMServiceParser.class was created for certain classes,
+        // so we don't need to extract class names
+        Pattern patternTimestamp = Pattern.compile
+                ("(20[0-9]{2}\\-[0-9]{2}\\-[0-9]{2}\\ [0-9]{2}\\:[0-9]{2}\\:" +
+                        "[0-9]{2}\\,[0-9]{3}) ([A-Z]{4,5}) " +
+                        "org.apache.hadoop.yarn.server.resourcemanager.ClientRMService: " +
+                        "Application with id ([0-9]{1,9}) submitted by user ([a-z0-9_-]{1,64})");
+        Matcher matcher = patternTimestamp.matcher(line);
+
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss,SSS");
         Date date = new Date();
 
-        try {
-            date = dateFormat.parse(parsing[0] + " " + parsing[1]);
-        }catch(Exception e) {
-            e.printStackTrace();
+        long timestamp = 0L;
+        String logLevel = null;
+        String clazz = "org.apache.hadoop.yarn.server.resourcemanager.ClientRMService";
+        long applicationId = 0L;
+        String user = null;
+
+        if (matcher.find()) {
+            try {
+                date = dateFormat.parse(matcher.group(1));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            timestamp = date.getTime();
+            logLevel = matcher.group(2);
+            applicationId = Integer.parseInt(matcher.group(3));
+            user = matcher.group(4);
         }
 
-        long timestamp = date.getTime();
-        String logLevel = parsing[2];
-        String[] clazz = parsing[3].split(":");
-        long applicationId = Integer.parseInt(parsing[7]);
-        String user = parsing[11];
-
         ApplicationInfo applicationInfo = new ApplicationInfo
-                    (user, applicationId, timestamp, clazz[0], logLevel);
+                (user, applicationId, timestamp, clazz, logLevel);
         return applicationInfo;
     }
 }
