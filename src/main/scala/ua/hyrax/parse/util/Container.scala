@@ -1,7 +1,7 @@
 package ua.hyrax.parse.util
 
 import ua.hyrax.parse.Const
-import ua.hyrax.parse.model.{Log, State}
+import ua.hyrax.parse.model.{Log, LogClass, State}
 
 /**
   * Created by devian on 15.07.16.
@@ -26,6 +26,6 @@ object Container extends Serializable{
     log._3.contains(Const.CLASS_CONTAINER_IMPL)
   }
   def inTransition(log: Log): Boolean ={
-    log.logClass.contains(Const.CLASS_CONTAINER_IMPL)
+    log.logClass == LogClass.RMContainerImpl
   }
 }
