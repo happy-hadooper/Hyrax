@@ -6,6 +6,7 @@ package ua.hyrax.parse.model
 object LogClass extends Enumeration{
   type LogClass = Value
   val RMContainerImpl= Value("RMContainerImpl")
+  val RMAppAttemptImpl= Value("RMAppAttemptImpl")
   val FairScheduler = Value("FairScheduler")
   val Null = Value("Null")
 
