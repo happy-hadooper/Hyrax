@@ -1,18 +1,13 @@
 package ua.hyrax.parse.model
 
-import java.lang.Long
+
+import ua.hyrax.parse.model.Level._
+import ua.hyrax.parse.model.LogClass.LogClass
+
 
 /**
   * Created by devian on 15.07.16.
   */
-class Log(val time: java.lang.Long, val logLevel: String,val logClass: String,val msg: String) extends Serializable{
-
-  def tuple ={
-    (time,logLevel,logClass.substring(0,logClass.length-1),msg)
-  }
-}
-object Log{
-  def apply(time: Long,logLevel: String,logClass: String,msg: String): Log = {
-    new Log(time, logLevel, logClass, msg)
-  }
+// Time: millisc,
+case class Log(val time: Long, val logLevel: Level,val logClass: LogClass,val msg: String) extends Serializable{
 }
